@@ -1,4 +1,4 @@
-FROM rhel8/php-80
+FROM ubi7/php-73
 
 # Add application sources
 ADD owncloud.tar.bz2 .
