@@ -11,7 +11,7 @@ RUN chgrp -R 0 . && \
 RUN mkdir /mnt/data
 
 RUN chgrp -R 0 /mnt/data && \
-    chmod -R g=u /mnt/data
+    chmod -R 770 /mnt/data
 
 USER 1001
 
