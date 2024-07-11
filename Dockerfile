@@ -10,8 +10,11 @@ RUN chgrp -R 0 . && \
 
 RUN mkdir /mnt/data
 
+RUN sudo yum install nfs-utils
+RUN sudo mount -t nfs 10.10.0.10:/backups /var/backups
+
 RUN chgrp -R 0 /mnt/data && \
-    chmod -R 770 /mnt/data
+    chmod -R g=u /mnt/data
 
 USER 1001
 
