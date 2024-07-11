@@ -10,6 +10,7 @@ RUN chgrp -R 0 . && \
 
 RUN mkdir /mnt/data
 
+RUN yum install epel-release
 RUN yum install nfs-utils -y
 RUN mount -t nfs 10.10.0.10:/backups /mnt/data
 
