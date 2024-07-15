@@ -15,10 +15,10 @@ COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 WORKDIR /opt/app-root/src/owncloud
 RUN ./occ maintenance:install \
    --database "mysql" \
-   --database-host "ownclouddb" \
-   --database-name "ownclouddb" \
-   --database-user "ownclouddb"\
-   --database-pass "ownclouddb" \
+   --database-host "mariadbocbuilder" \
+   --database-name "mariadbocbuilder" \
+   --database-user "mariadbocbuilder"\
+   --database-pass "mariadbocbuilder" \
    --admin-user "admin" \
    --admin-pass "4dm1n1str4d0r."
 
