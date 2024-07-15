@@ -10,12 +10,10 @@ RUN chgrp -R 0 . && \
 
 RUN mkdir /mnt/data
 
-RUN yum install epel-release
-RUN yum install nfs-utils -y
-RUN mount -t nfs 10.10.0.10:/backups /mnt/data
-
 RUN chgrp -R 0 /mnt/data && \
     chmod -R g=u /mnt/data
+
+COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 
 USER 1001
 
