@@ -15,6 +15,16 @@ RUN chgrp -R 0 /mnt/data && \
 
 COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 
+#Correr la instalación desde la CLI
+WORKDIR /opt/app-root/src/owncloud
+RUN ./occ maintenance:install \
+   --database "ownclouddb" \
+   --database-name "ownclouddb" \
+   --database-user "ownclouddb"\
+   --database-pass "ownclouddb" \
+   --admin-user "admin" \
+   --admin-pass "4dm1n1str4d0r."
+
 USER 1001
 
 EXPOSE 8080
