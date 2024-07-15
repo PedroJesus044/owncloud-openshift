@@ -5,10 +5,8 @@ ADD owncloud.tar.bz2 .
 
 USER 0
 
-RUN mkdir /mnt/data
-
-RUN chgrp -R 0 /mnt/data && \
-    chmod -R g=u /mnt/data
+RUN chgrp -R 0 /opt/app-root/src/owncloud && \
+    chmod -R g=u /opt/app-root/src/owncloud
 
 COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 
@@ -25,6 +23,9 @@ RUN ./occ maintenance:install \
    --admin-pass "4dm1n1str4d0r."
 
 RUN sed -i 's/localhost/owncloud-openshift-git-or15.apps.ocpprod.pjedomex.gob.mx/g' config/config.php
+
+RUN chgrp -R 0 /opt/app-root/src/owncloud && \
+    chmod -R g=u /opt/app-root/src/owncloud
 
 EXPOSE 8080
 CMD /usr/libexec/s2i/run
