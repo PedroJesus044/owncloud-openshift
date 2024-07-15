@@ -13,6 +13,8 @@ RUN chgrp -R 0 /mnt/data && \
 COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 
 #Correr la instalación desde la CLI
+USER 48
+
 WORKDIR /opt/app-root/src/owncloud
 RUN ./occ maintenance:install \
    --database "mysql" \
