@@ -18,7 +18,7 @@ COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 #Correr la instalación desde la CLI
 WORKDIR /opt/app-root/src/owncloud
 RUN ./occ maintenance:install \
-   --database "ownclouddb" \
+   --database "mysql" \
    --database-name "ownclouddb" \
    --database-user "ownclouddb"\
    --database-pass "ownclouddb" \
