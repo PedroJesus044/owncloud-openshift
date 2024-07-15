@@ -26,5 +26,7 @@ RUN ./occ maintenance:install \
 RUN chgrp -R 0 . && \
    chmod -R g=u .
 
+RUN sed -i 's/localhost/owncloud-openshift-git-or15.apps.ocpprod.pjedomex.gob.mx/g' config/config.php
+
 EXPOSE 8080
 CMD /usr/libexec/s2i/run
