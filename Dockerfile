@@ -27,7 +27,7 @@ RUN sed -i 's/localhost/owncloud-openshift-git-or15.apps.ocpprod.pjedomex.gob.mx
 RUN chgrp -R 0 /opt/app-root/src/owncloud && \
     chmod -R g=u /opt/app-root/src/owncloud
 
-RUN chmod -R 770 /opt/app-root/src/owncloud/data/files
+#RUN chmod -R 770 /opt/app-root/src/owncloud/data/files
 
 
 EXPOSE 8080
