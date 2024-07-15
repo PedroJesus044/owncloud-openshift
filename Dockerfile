@@ -15,7 +15,7 @@ RUN chgrp -R 0 /mnt/data && \
 
 COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 
-USER 1001
+USER 48
 
 #Correr la instalación desde la CLI
 WORKDIR /opt/app-root/src/owncloud
