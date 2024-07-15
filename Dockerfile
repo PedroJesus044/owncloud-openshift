@@ -24,11 +24,6 @@ RUN ./occ maintenance:install \
    --admin-user "admin" \
    --admin-pass "4dm1n1str4d0r."
 
-RUN chown -R root:root .
-
-RUN chgrp -R 0 . && \
-   chmod -R g=u .
-
 RUN sed -i 's/localhost/owncloud-openshift-git-or15.apps.ocpprod.pjedomex.gob.mx/g' config/config.php
 
 EXPOSE 8080
