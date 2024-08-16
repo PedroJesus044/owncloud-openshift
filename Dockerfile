@@ -5,8 +5,7 @@ ADD owncloud.tar.bz2 .
 
 USER 0
 
-RUN chgrp -R 0 /opt/app-root/src/owncloud && \
-    chmod -R g=u /opt/app-root/src/owncloud
+RUN chown -R apache:apache /opt/app-root/src/owncloud
 
 COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 
@@ -29,6 +28,9 @@ RUN ./occ maintenance:install \
 
 # RUN chmod -R 770 /opt/app-root/src/owncloud/data/files
 
+
+RUN chgrp -R 0 /opt/app-root/src/owncloud && \
+    chmod -R g=u /opt/app-root/src/owncloud
 
 EXPOSE 8080
 CMD /usr/libexec/s2i/run
