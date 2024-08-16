@@ -15,7 +15,7 @@ COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 WORKDIR /opt/app-root/src/owncloud
 USER apache
 RUN ./occ maintenance:install \
-   --database "openshift" \
+   --database "mysql" \
    --database-name "openshift" \
    --database-user "openshift"\
    --database-pass "openshift" \
