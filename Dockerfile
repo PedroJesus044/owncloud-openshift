@@ -5,22 +5,22 @@ ADD owncloud.tar.bz2 .
 
 USER 0
 
-RUN chown -R apache:apache /opt/app-root/src/owncloud
+RUN chgrp -R 0 /opt/app-root/src/owncloud && \
+    chmod -R g=u /opt/app-root/src/owncloud
 
 COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 
 #Correr la instalación desde la CLI
 
-WORKDIR /opt/app-root/src/owncloud
-USER apache
-RUN ./occ maintenance:install \
-   --database "mysql" \
-   --database-host "openshift" \
-   --database-name "openshift" \
-   --database-user "openshift"\
-   --database-pass "openshift" \
-   --admin-user "admin" \
-   --admin-pass "admin"
+# WORKDIR /opt/app-root/src/owncloud
+# RUN ./occ maintenance:install \
+#    --database "mysql" \
+#    --database-host "mariadbocbuilder" \
+#    --database-name "mariadbocbuilder" \
+#    --database-user "mariadbocbuilder"\
+#    --database-pass "mariadbocbuilder" \
+#    --admin-user "admin" \
+#    --admin-pass "4dm1n1str4d0r."
 
 # RUN sed -i 's/localhost/owncloud-openshift-git-or15.apps.ocpprod.pjedomex.gob.mx/g' config/config.php
 
@@ -29,11 +29,6 @@ RUN ./occ maintenance:install \
 
 # RUN chmod -R 770 /opt/app-root/src/owncloud/data/files
 
-USER 0
-RUN chgrp -R 0 /opt/app-root/src/owncloud && \
-    chmod -R g=u /opt/app-root/src/owncloud
-
-RUN chmod 0770 /opt/app-root/src/owncloud/data
 
 EXPOSE 8080
 CMD /usr/libexec/s2i/run
