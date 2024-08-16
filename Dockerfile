@@ -29,9 +29,11 @@ RUN ./occ maintenance:install \
 
 # RUN chmod -R 770 /opt/app-root/src/owncloud/data/files
 
-
+USER 0
 RUN chgrp -R 0 /opt/app-root/src/owncloud && \
     chmod -R g=u /opt/app-root/src/owncloud
+
+RUN chmod 0770 /opt/app-root/src/owncloud/data
 
 EXPOSE 8080
 CMD /usr/libexec/s2i/run
