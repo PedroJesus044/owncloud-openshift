@@ -13,8 +13,8 @@ COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 #Correr la instalación desde la CLI
 
 WORKDIR /opt/app-root/src/owncloud
-USER 0
-RUN sudo -u apache ./occ maintenance:install \
+USER apache
+RUN ./occ maintenance:install \
    --database "openshift" \
    --database-name "openshift" \
    --database-user "openshift"\
