@@ -15,6 +15,7 @@ WORKDIR /opt/app-root/src/owncloud
 USER apache
 RUN ./occ maintenance:install \
    --database "mysql" \
+   --database-host "openshift" \
    --database-name "openshift" \
    --database-user "openshift"\
    --database-pass "openshift" \
