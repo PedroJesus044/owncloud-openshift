@@ -13,14 +13,14 @@ COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 #Correr la instalación desde la CLI
 
 # WORKDIR /opt/app-root/src/owncloud
-# RUN ./occ maintenance:install \
-#    --database "mysql" \
-#    --database-host "mariadbocbuilder" \
-#    --database-name "mariadbocbuilder" \
-#    --database-user "mariadbocbuilder"\
-#    --database-pass "mariadbocbuilder" \
-#    --admin-user "admin" \
-#    --admin-pass "4dm1n1str4d0r."
+USER 0
+RUN sudo -u apache ./occ maintenance:install \
+   --database "openshift" \
+   --database-name "openshift" \
+   --database-user "openshift"\
+   --database-pass "openshift" \
+   --admin-user "admin" \
+   --admin-pass "admin"
 
 # RUN sed -i 's/localhost/owncloud-openshift-git-or15.apps.ocpprod.pjedomex.gob.mx/g' config/config.php
 
