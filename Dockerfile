@@ -28,7 +28,7 @@ COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 #     chmod -R g=u /opt/app-root/src/owncloud
 
 # RUN chmod -R 770 /opt/app-root/src/owncloud/data/files
-RUN mkdir /opt/app-root/src/owncloud/data/files
+RUN mkdir -p /opt/app-root/src/owncloud/data/files
 
 RUN usermod -a -G apache root
 
