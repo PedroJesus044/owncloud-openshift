@@ -30,6 +30,9 @@ COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 # RUN chmod -R 770 /opt/app-root/src/owncloud/data/files
 RUN mkdir -p /opt/app-root/src/owncloud/data/files
 
+RUN chgrp -R 0 /opt/app-root/src/owncloud && \
+    chmod -R g=u /opt/app-root/src/owncloud
+
 RUN usermod -a -G apache root
 
 EXPOSE 8080
