@@ -30,7 +30,7 @@ COPY owncloud-httpd.conf /etc/httpd/conf.d/owncloud-httpd.conf
 # RUN chmod -R 770 /opt/app-root/src/owncloud/data/files
 
 RUN usermod -a -G apache root
->>>>>>> cc903a6c (apache sudoer)
+
 EXPOSE 8080
 USER apache
 CMD /usr/libexec/s2i/run
